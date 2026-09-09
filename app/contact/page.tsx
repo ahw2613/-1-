@@ -1,0 +1,8 @@
+import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site";
+
+export const metadata: Metadata = { title: "CONTACT", description: "루미너스 디자인 상담 및 문의." };
+
+export default function ContactPage() {
+  return <main className="sub-page contact-page"><section className="page-intro"><p className="eyebrow">LUMINOUS DESIGN / CONTACT</p><h1>CONTACT US</h1><p>일상이 특별해지는 공간을 함께 이야기해보세요.</p></section><section className="contact-layout"><div className="contact-details"><div><span>EMAIL</span><strong>{siteConfig.email}</strong></div><div><span>PHONE</span><strong>{siteConfig.phone}</strong></div><div><span>ADDRESS</span><strong>{siteConfig.address}</strong></div></div><form className="consult-form"><label>성함<input name="name" placeholder="성함을 입력해주세요." /></label><label>연락처<input name="phone" placeholder="연락 가능한 번호를 입력해주세요." /></label><label>공간 유형<select name="type"><option>주거공간</option><option>상업공간</option></select></label><label>상담 내용<textarea name="message" rows={6} placeholder="원하시는 공간, 지역, 평수 등을 자유롭게 적어주세요." /></label><button type="button">상담 신청하기 <span>↗</span></button><p className="form-note">현재는 상담 UI를 먼저 구성했습니다. 실제 알림 전송은 사용할 이메일/폼 서비스 연결 후 활성화됩니다.</p></form></section><section className="contact-process"><p className="eyebrow">PROCESS</p><div className="process-grid"><div><b>01</b><strong>상담 신청</strong><span>공간과 일정에 대해 알려주세요.</span></div><div><b>02</b><strong>1:1 상담</strong><span>현장과 라이프스타일을 함께 살핍니다.</span></div><div><b>03</b><strong>제안</strong><span>공간에 맞는 방향과 견적을 안내합니다.</span></div><div><b>04</b><strong>완성</strong><span>디테일까지 책임지고 완성합니다.</span></div></div></section></main>;
+}
