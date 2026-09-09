@@ -6,15 +6,13 @@ import { projects } from "@/data/projects";
 
 export function generateStaticParams() { return projects.map((p) => ({ slug: p.slug })); }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+  const project = projects.find((p) => p.slug === params.slug);
   return project ? { title: `${project.apartment} ${project.area}평`, description: `${project.city} ${project.district} ${project.apartment} ${project.area}평 ${project.title} 프로젝트.` } : {};
 }
 
-export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+export default function ProjectDetail({ params }: { params: { slug: string } }) {
+  const project = projects.find((p) => p.slug === params.slug);
   if (!project) notFound();
   return <main className="detail-page">
     <section className="detail-title"><p className="eyebrow">{project.city} · {project.district} · {project.neighborhood}</p><h1>{project.squareNumber}</h1><p>{project.apartment} {project.area}평</p></section>
